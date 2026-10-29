@@ -250,3 +250,60 @@ confirmando a exigência de autenticação na API publicada.
 ### Evidência do deploy
 
 ![API publicada retornando HTTP 401](prints/api-render-401.png)
+
+## 13. Testes reais no ambiente de produção
+
+Após o deploy, foram realizados testes diretamente na API
+publicada no Render, utilizando o banco PostgreSQL.
+
+### Autenticação
+
+O endpoint `POST /api/login/` foi testado com um usuário
+cadastrado no PostgreSQL.
+
+**Resultado:** HTTP 200 OK, com geração de Token.
+
+### Criação de tarefa
+
+Uma tarefa foi criada por meio de uma requisição autenticada
+à rota `POST /api/tarefas/`.
+
+- Título: Testar API no Render
+- Usuário: ana_render
+- Prioridade: Alta
+- Concluída: Não
+
+**Resultado:** HTTP 201 Created.
+
+A tarefa também foi localizada no Django Admin publicado,
+confirmando sua persistência no PostgreSQL.
+
+![Tarefa cadastrada no PostgreSQL do Render](prints/admin-render.png)
+
+### Estatísticas
+
+Foi realizada uma requisição autenticada:
+
+`GET /api/tarefas/estatisticas/`
+
+**Resultado real:** HTTP 200 OK.
+
+```json
+{
+  "total": 1,
+  "concluidas": 0,
+  "pendentes": 1
+}
+```
+
+O resultado corresponde à tarefa criada no ambiente publicado.
+
+### Conclusão
+
+A API foi implementada e publicada com sucesso, incluindo
+as funcionalidades obrigatórias, os quatro desafios adicionais
+de código e o deploy.
+
+Os 14 testes automatizados foram aprovados, sem falhas.
+
+**API publicada:** https://todoapi-projeto-3.onrender.com/api/tarefas/
