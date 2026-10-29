@@ -21,6 +21,15 @@ class Tarefa(models.Model):
         on_delete=models.CASCADE,
         related_name='tarefas',
     )
+    
+    tarefa_pai = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='subtarefas',
+    )
+
 
     class Meta:
         ordering = ['-data_criacao', '-id']
