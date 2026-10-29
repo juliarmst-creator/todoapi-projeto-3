@@ -233,3 +233,20 @@ As capturas de tela poderão ser adicionadas à pasta `prints/`.
 O código-fonte está disponível em:
 
 https://github.com/juliarmst-creator/todoapi-projeto-3
+
+## 12. Deploy no Render
+
+A API foi publicada no Render, utilizando Django, Gunicorn,
+WhiteNoise e PostgreSQL.
+
+**URL pública:** https://todoapi-projeto-3.onrender.com
+
+**Endpoint de tarefas:**
+https://todoapi-projeto-3.onrender.com/api/tarefas/
+
+O acesso sem Token retorna HTTP 401 Unauthorized,
+confirmando a exigência de autenticação na API publicada.
+
+### Evidência do deploy
+
+![API publicada retornando HTTP 401](prints/api-render-401.png)
